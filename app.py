@@ -18,7 +18,7 @@ class Stock_symbol(db.Model):
     stock_symbol_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     reason = db.Column(db.String(120), unique=True, nullable=False)
-    is_fraud = db.Column(db.Bool, unique=True, nullable=False)
+    is_fraud = db.Column(db.BOOLEAN, unique=True, nullable=False)
 
     def __init__(self, name, reason, is_fraud):
         self.name = name
@@ -29,8 +29,8 @@ class Stock_symbol(db.Model):
 class User(db.Model):
     username = db.Column(db.String(30), primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=False)
-    time_start = db.Column(db.DATETIME, unique=False, nullable=False)
-    time_end = db.Column(db.DATETIME, unique=False, nullable=True)
+    time_start = db.Column(db.DateTime, unique=False, nullable=False)
+    time_end = db.Column(db.DateTime, unique=False, nullable=True)
     stock_symbol_id = db.Column(db.String(20), unique=False, nullable=False)
 
     def __init__(self, name, time_start, time_end, stock_symbol_id):
